@@ -8,6 +8,7 @@
   który jest interfejsem listy
 */
 #include "IList.hh"
+#include <exception>
 /*!
   \brief Szablon listy
 
@@ -88,6 +89,84 @@ public:
     else
       return Tablica[index];
   }
+  
+private:
+	void swap(int indexOne, int indexTwo) {
+		Typ elementOne;
+		Typ elementTwo;
+		try {
+			elementOne = get(indexOne);
+			elementTwo = get(indexTwo);
+			remove(indexOne);
+			add(elementTwo,indexOne);
+			remove(indexTwo);
+			add(elementOne,indexTwo);
+		}
+		catch (...) {
+			throw;
+		}
+	}
+ 
+  /*!
+   *\brief Sortowanie szybkie
+   *
+   * Sortuje elementy na liście algorytmem quicksort
+   * \param[in] indexFront indeks elementu pierwszego do sortowania
+   * \param[in] indexBack indeks elementu ostatniego do sortowania
+   * \note Tą metodę dodano na zajęciach w grupach, 2016-04-04 ~218582
+   * \warning wymaga typu danych zawierającego przeciążenie operatora porównania
+   * \exception EmptyListException gdy lista jest pusta
+   */
+  void quicksort(int indexFront, int indexBack) {
+  	if (indexBack == 0) {throw EmptyListException();}
+	int i = indexFront;
+	int j = indexBack;
+	Typ pivot = get((i+j)/2);
+  	try{
+  		do {
+			while(get(i) < pivot) {
+				i=i+1;
+			}
+			while (get(j) > pivot) {
+				j=j-1;
+			}
+			swap(i,j);
+			i=i+1;
+			j=j-1;
+		} while ((i<=j));
+		if (indexFront < j) {
+			quicksort (indexFront, j);
+		}
+		if (i<indexBack) {
+			quicksort (i, indexBack);
+		}
+	}
+  	catch(...) {
+  		throw;
+  	}
+  }
+  
+public:
+	/*!
+	 *\brief Sortowanie szybkie całej listy
+	 *
+	 * Sortuje sortowaniem szybkim całą tablicę
+	 */
+	void qs(void) {
+ 		try {
+ 			for(int i=0;i<size()-1;i++) {
+ 				cout << get(i) << " ";
+ 			}
+ 			cout << endl << "------------------------------" << endl;
+ 			quicksort(0,size()-1);
+ 			for(int i=0;i<size()-1;i++) {
+ 				cout << get(i) << " ";
+ 			}
+ 		}	
+ 		catch (...) {
+ 			throw;
+ 		}
+ 	}
   
 };
 
