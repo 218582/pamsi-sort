@@ -130,14 +130,16 @@ private:
 			while (get(j) > pivot) {
 				j=j-1;
 			}
-			swap(i,j);
-			i=i+1;
-			j=j-1;
-		} while ((i<=j));
+			if (i<=j) {
+				swap(i,j);
+				i=i+1;
+				j=j-1;
+			}
+		} while (i<=j);
 		if (indexFront < j) {
 			quicksort (indexFront, j);
 		}
-		if (i<indexBack) {
+		if (indexBack > i) {
 			quicksort (i, indexBack);
 		}
 	}
@@ -159,7 +161,7 @@ public:
  			}
  			cout << endl << "------------------------------" << endl;
  			quicksort(0,size()-1);
- 			for(int i=0;i<size()-1;i++) {
+ 			for(int i=0;i<size();i++) {
  				cout << get(i) << " ";
  			}
  		}	

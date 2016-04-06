@@ -10,12 +10,14 @@ using namespace std;
 
 int main()
 {
+
+
 	int liczbaElementow[] = {10, 100, 1000, 1000000/*, 1000000000*/};
 	
 	Stoper czas;
 	ListTest_sort Lista;
 	try{
-		Lista.prepare(liczbaElementow[1]);
+		Lista.prepare(liczbaElementow[0]);
 		czas.start();
 		Lista.run();
 		czas.stop();
@@ -27,6 +29,8 @@ int main()
 		cout << "Unexpected!" << endl;
 	}
 	cout << "Czas działania: " << czas.getElapsedTime() << " ms." << endl;
+
+
 
 
  // int liczbaElementow[ELEM] = {10, 1000, 10000, 100000, 1000000};
