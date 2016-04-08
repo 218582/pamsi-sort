@@ -42,7 +42,7 @@ public:
  
 
   void DodajElement (Typ Element, int indexElementu){
-    if(indexElementu >= index){
+    if(indexElementu > index){
       if ( indexElementu >= Irozmiar -1) {
 	while (indexElementu >= Irozmiar -1) ZwiekszRozmiar();
 	Realokuj(indexElementu);

@@ -156,7 +156,7 @@ public:
 	 */
 	void qs(void) {
  		try {
- 			for(int i=0;i<size()-1;i++) {
+ 			for(int i=0;i<size();i++) {
  				cout << get(i) << " ";
  			}
  			cout << endl << "------------------------------" << endl;
