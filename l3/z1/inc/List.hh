@@ -32,7 +32,7 @@ public:
     \param[in] item - element, który chcemy umieścić na liście
     \param[in] index - miejsce, gdzie chcemy zapisać element (liczony od 0)
   */
-  void add (Typ item, int index){
+  virtual void add (Typ item, int index){
     Tablica.DodajElement(item, index);
   }
 
@@ -44,7 +44,7 @@ public:
     którego nie ma na liście
     \return Zwraca usunięty element
   */
-  Typ remove(int index)
+  virtual Typ remove(int index)
     throw (EmptyListException)
   {
     if(index > Tablica.Index())
@@ -59,7 +59,7 @@ public:
 
     \return Zwraca liczbę elementów zapisanych na liście
   */
-  int size(){return Tablica.Index()+1;}
+  virtual int size(){return Tablica.Index()+1;}
   /*!
     \brief Czy pusty?
     
@@ -68,7 +68,7 @@ public:
     \retval true - lista pusty
     \retval false - na liście są elementy
   */
-  bool isEmpty()
+  virtual bool isEmpty()
   {
     if(Tablica.Index() >= 0) return false;
     else return true;		   
@@ -82,7 +82,7 @@ public:
     \param[in] index - Numer elementu, który chcemy odczytać, gdzie index 0 to pierwszy element
     \return Zwraca element, bez jego usuwania
   */
-  Typ get(int index) 
+  virtual Typ get(int index) 
   {
     if (index > Tablica.Index())
       throw EmptyListException();

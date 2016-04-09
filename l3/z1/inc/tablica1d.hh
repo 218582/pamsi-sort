@@ -29,10 +29,10 @@ protected:
   void ZwiekszRozmiar(){ Irozmiar*=2;}
 public:
   tablica1D() {TablicaPtr = new Typ [Irozmiar];}
-  ~tablica1D() {delete [] TablicaPtr;}
-  int Index() {return index;}
+  virtual ~tablica1D() {delete [] TablicaPtr;}
+  virtual int Index() {return index;}
 
-  void DodajElement (Typ Element){
+  virtual void DodajElement (Typ Element){
     if ( index >= Irozmiar -1) {
       ZwiekszRozmiar();
       Realokuj();
@@ -41,7 +41,11 @@ public:
   }
  
 
+<<<<<<< HEAD
   void DodajElement (Typ Element, int indexElementu){
+=======
+  virtual void DodajElement (Typ Element, int indexElementu){
+>>>>>>> upstream/master
     if(indexElementu > index){
       if ( indexElementu >= Irozmiar -1) {
 	while (indexElementu >= Irozmiar -1) ZwiekszRozmiar();
@@ -55,14 +59,16 @@ public:
 	ZwiekszRozmiar();
       Realokuj(indexElementu);
       TablicaPtr[indexElementu]=Element;
+      
+      
     } 
   }
 
 
-  Typ operator [](int N){  if (N >= Irozmiar) return 0; else return TablicaPtr[N];}
+  virtual Typ operator [] (int N)const  {   return TablicaPtr[N];}
+  virtual Typ& operator [] (int N) { return TablicaPtr[N];}
 
-
-  Typ UsunElement() {
+  virtual Typ UsunElement() {
     Typ Element;
     if (index >= 0){
       Element = TablicaPtr[index];
@@ -72,7 +78,7 @@ public:
     return Element;
   }
 
-  Typ UsunElement(int indexElementu) {
+  virtual Typ UsunElement(int indexElementu) {
     Typ Element;
     if (index >= 0 && index >= indexElementu){
       Element = TablicaPtr[indexElementu];
