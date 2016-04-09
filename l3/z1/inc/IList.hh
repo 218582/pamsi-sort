@@ -38,6 +38,10 @@ public:
     \brief Element listy
   */
   virtual Typ get(int)=0;
+  /*!
+    \brief Sortowanie szybkie
+  */
+  virtual void qs(void)=0;
 };
   
 

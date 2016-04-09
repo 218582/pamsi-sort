@@ -10,28 +10,29 @@ using namespace std;
 
 int main()
 {
-Itablica1D<int> * tabl = new tablica1D<int>;
-tabl->DodajElement(1);
-tabl->DodajElement(6);
-tabl->DodajElement(78);
-tabl->DodajElement(3);
-tabl->DodajElement(6);
-tabl->DodajElement(-11);
-tabl->DodajElement(8);
-tabl->DodajElement(4);
-tabl->DodajElement(4);
-tabl->DodajElement(0);
+	IList<int> * tabl = new List<int>;
+	int k=0;
+	tabl->add(1,k++);
+	tabl->add(6,k++);
+	tabl->add(78,k++);
+	tabl->add(3,k++);
+	tabl->add(6,k++);
+	tabl->add(-11,k++);
+	tabl->add(8,k++);
+	tabl->add(4,k++);
+	tabl->add(4,k++);
+	tabl->add(0,k++);
 
-for (int i=0; i<=tabl->Index(); i++) {
-	cout << tabl->operator[](i) << " ";
-}
-cout << endl;
+	for (int i=0; i<tabl->size(); i++) {
+		cout << tabl->get(i) << " ";
+	}
+	cout << endl;
 
-tabl->qs(0,tabl->Index());
-for (int i=0; i<=tabl->Index(); i++) {
-	cout << tabl->operator[](i) << " ";
-}
-cout << endl;
+	tabl->qs();
+	for (int i=0; i<tabl->size(); i++) {
+		cout << tabl->get(i) << " ";
+	}
+	cout << endl;
 
 
   /* 

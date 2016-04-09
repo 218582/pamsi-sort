@@ -89,6 +89,31 @@ public:
       return Tablica[index];
   }
   
+private:
+	void quicksort(int indexFront, int indexBack) {
+		if (indexBack == 0) {throw EmptyListException();}
+  		else 
+  			Tablica.qs(indexFront,indexBack);
+  		}
+  	
+public:
+  /*!
+   *\brief Sortowanie szybkie
+   *
+   * Sortuje elementy algorytmem quicksort
+   * \param[in] indexFront indeks elementu pierwszego do sortowania
+   * \param[in] indexBack indeks elementu ostatniego do sortowania
+   * \warning wymaga typu danych zawierającego przeciążenie operatora porównania
+   * \exception EmptyListException gdy lista jest pusta
+   */
+   virtual void qs(void) {
+   		try {
+	   		quicksort(0,Tablica.Index());
+	   	}
+	   	catch (...) {
+	   		throw;
+	   	}
+   }
 };
 
 #endif
