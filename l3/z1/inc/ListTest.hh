@@ -34,7 +34,7 @@ private:
 	 *\retval Liczba pseudolosowa z zakresu 0..9
 	 */
 	int generateRandomDgt (void) {
-		return rand()%10;
+		return rand()%9999;
 	}
 public:	
 

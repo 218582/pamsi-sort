@@ -11,16 +11,34 @@ using namespace std;
 int main()
 {
 
-
-	int liczbaElementow[] = {10, 100, 1000, 1000000/*, 1000000000*/};
+	//system("\"paplay /usr/share/sounds/ubuntu/ringtones/Alarm clock.ogg\"");
+	int liczbaElementow[] = {10, 100, 1000, 10000, 100000/*, 1000000*/ /*, 1000000000*/};
 	
 	Stoper czas;
-	ListTest_sort Lista;
+	double srednia = 0;
+	
+	ofstream Wyniki;
+	Wyniki.open("Wyniki");
+	if(!Wyniki.is_open()){
+    	cerr << "Nie otwarty plik!"<< endl;
+   	 return 1;
+	}
+	
 	try{
-		Lista.prepare(liczbaElementow[0]);
-		czas.start();
-		Lista.run();
-		czas.stop();
+		for (int i=0; i<4; i++) {
+			for(int j=0; j<10; j++) {
+				ListTest_sort Lista;
+				Lista.prepare(liczbaElementow[i]);
+				czas.start();
+				Lista.run();
+				czas.stop();
+				srednia = srednia + czas.getElapsedTime();
+			}
+			srednia = srednia / 10;
+			Wyniki << liczbaElementow[i] << " " << srednia << endl;
+			srednia = 0;
+			cout << "Test for " << liczbaElementow[i] << " finished." << endl;
+		}
 	}
 	catch (EmptyListException()) {
 		cout << "EmptyListException!" << endl;
@@ -28,7 +46,8 @@ int main()
 	catch (...) {
 		cout << "Unexpected!" << endl;
 	}
-	cout << "Czas działania: " << czas.getElapsedTime() << " ms." << endl;
+//	cout << "Czas działania: " << czas.getElapsedTime() << " ms." << endl;
+	Wyniki.close();
 
 
 

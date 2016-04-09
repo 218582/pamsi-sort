@@ -156,14 +156,14 @@ public:
 	 */
 	void qs(void) {
  		try {
- 			for(int i=0;i<size();i++) {
- 				cout << get(i) << " ";
- 			}
- 			cout << endl << "------------------------------" << endl;
+// 			for(int i=0;i<size();i++) {
+// 				cout << get(i) << " ";
+// 			}
+// 			cout << endl << "------------------------------" << endl;
  			quicksort(0,size()-1);
- 			for(int i=0;i<size();i++) {
- 				cout << get(i) << " ";
- 			}
+// 			for(int i=0;i<size();i++) {
+// 				cout << get(i) << " ";
+// 			}
  		}	
  		catch (...) {
  			throw;
