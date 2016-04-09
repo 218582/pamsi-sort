@@ -41,11 +41,7 @@ public:
   }
  
 
-<<<<<<< HEAD
-  void DodajElement (Typ Element, int indexElementu){
-=======
   virtual void DodajElement (Typ Element, int indexElementu){
->>>>>>> upstream/master
     if(indexElementu > index){
       if ( indexElementu >= Irozmiar -1) {
 	while (indexElementu >= Irozmiar -1) ZwiekszRozmiar();

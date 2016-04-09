@@ -3,9 +3,6 @@ CCFLAGS= -Wall -pedantic -std=c++11 -g
 start: zad1
 	./zad1
 
-obj:
-	mkdir obj
-
 zad1:   obj/tablica1dtest.o  obj/Stoper.o  obj/ListTest.o obj/StackTest.o obj/QueueTest.o src/main.cpp 
 	g++ $(CCFLAGS) src/main.cpp  obj/tablica1dtest.o obj/Stoper.o  obj/StackTest.o obj/QueueTest.o obj/ListTest.o -o zad1
 
