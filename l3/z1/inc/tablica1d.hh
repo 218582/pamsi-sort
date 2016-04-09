@@ -91,6 +91,43 @@ public:
     else return 0;
     return Element;
   }
+  
+  
+  void swap(int indexOne, int indexTwo) {
+		Typ elementOne;
+		Typ elementTwo;
+		elementOne = TablicaPtr[indexOne];
+		elementTwo = TablicaPtr[indexTwo];
+		UsunElement(indexOne);
+		DodajElement(elementTwo,indexOne);
+		UsunElement(indexTwo);
+		DodajElement(elementOne,indexTwo);
+	}
+  
+  virtual void qs(int indexFront , int indexBack) {	
+	int i = indexFront;
+	int j = indexBack;
+	Typ pivot = TablicaPtr[((i+j)/2)];
+	do {
+		while(TablicaPtr[i] < pivot) {
+			i=i+1;
+		}
+		while (TablicaPtr[j] > pivot) {
+			j=j-1;
+		}
+		if (i<=j) {
+			swap(i,j);
+			i=i+1;
+			j=j-1;
+		}
+	} while (i<=j);
+	if (indexFront < j) {
+		qs(indexFront, j);
+	}
+	if (indexBack > i) {
+		qs(i, indexBack);
+	}
+  }
 
 
 };

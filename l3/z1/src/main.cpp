@@ -10,6 +10,30 @@ using namespace std;
 
 int main()
 {
+Itablica1D<int> * tabl = new tablica1D<int>;
+tabl->DodajElement(1);
+tabl->DodajElement(6);
+tabl->DodajElement(78);
+tabl->DodajElement(3);
+tabl->DodajElement(6);
+tabl->DodajElement(-11);
+tabl->DodajElement(8);
+tabl->DodajElement(4);
+tabl->DodajElement(4);
+tabl->DodajElement(0);
+
+for (int i=0; i<=tabl->Index(); i++) {
+	cout << tabl->operator[](i) << " ";
+}
+cout << endl;
+
+tabl->qs(0,tabl->Index());
+for (int i=0; i<=tabl->Index(); i++) {
+	cout << tabl->operator[](i) << " ";
+}
+cout << endl;
+
+
   /* 
   int liczbaElementow[ELEM] = {10, 1000, 10000, 100000, 1000000};
   double Srednia;
@@ -55,59 +79,59 @@ int main()
 	   WynikiSrednie << liczbaElementow[j] << "," << Srednia << endl;
   }
   */
-  ListTest Lista;
-  StackTest Stos;
-  QueueTest Kolejka;
- 
-  Lista.prepare(10);
-  Lista.display();
-  cout<<Lista.get(9)<<endl;
-  Lista.reset();
-  Lista.display();
-  Lista.prepare(10);
-  try{  
-    Lista.get(11);
-  }
-  catch(EmptyListException)
-    {  
-      cout<<"Wyjatek"<<endl;
-    }
-  
-  try{
-    Stos.pop();
-  }
-  catch(EmptyStackException)
-    {
-      cout<<"Stos pusty!"<<endl;
-    }
-  Stos.fill(10);
-  Stos.display();
-  cout<<Stos.pop()<<endl;
-  Stos.display();
-  Stos.push(2);
-  Stos.display();
-  for(int i =0; i<10 ; ++i)
-    Stos.pop();
-  Stos.display();
+//  ListTest Lista;
+//  StackTest Stos;
+//  QueueTest Kolejka;
+// 
+//  Lista.prepare(10);
+//  Lista.display();
+//  cout<<Lista.get(9)<<endl;
+//  Lista.reset();
+//  Lista.display();
+//  Lista.prepare(10);
+//  try{  
+//    Lista.get(11);
+//  }
+//  catch(EmptyListException)
+//    {  
+//      cout<<"Wyjatek"<<endl;
+//    }
+//  
+//  try{
+//    Stos.pop();
+//  }
+//  catch(EmptyStackException)
+//    {
+//      cout<<"Stos pusty!"<<endl;
+//    }
+//  Stos.fill(10);
+//  Stos.display();
+//  cout<<Stos.pop()<<endl;
+//  Stos.display();
+//  Stos.push(2);
+//  Stos.display();
+//  for(int i =0; i<10 ; ++i)
+//    Stos.pop();
+//  Stos.display();
 
-  try{
-    Kolejka.dequeue();
-  }
-  catch(EmptyQueueException)
-    {
-      cout<<"Kolejka pusta!"<<endl;
-    }
-  Kolejka.fill(10);
-  Kolejka.display();
-  cout<< Kolejka.dequeue() <<endl;
-  Kolejka.display();
-  Kolejka.enqueue(3);
-  Kolejka.display();
-  for(int i = 0; i < 10; ++i)
-    Kolejka.dequeue();
-  Kolejka.display();
-  if(Kolejka.isEmpty())
-    cout<<"Pusta"<<endl;
+//  try{
+//    Kolejka.dequeue();
+//  }
+//  catch(EmptyQueueException)
+//    {
+//      cout<<"Kolejka pusta!"<<endl;
+//    }
+//  Kolejka.fill(10);
+//  Kolejka.display();
+//  cout<< Kolejka.dequeue() <<endl;
+//  Kolejka.display();
+//  Kolejka.enqueue(3);
+//  Kolejka.display();
+//  for(int i = 0; i < 10; ++i)
+//    Kolejka.dequeue();
+//  Kolejka.display();
+//  if(Kolejka.isEmpty())
+//    cout<<"Pusta"<<endl;
 
 }
 
