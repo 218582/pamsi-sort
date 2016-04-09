@@ -10,29 +10,67 @@ using namespace std;
 
 int main()
 {
-	IList<int> * tabl = new List<int>;
-	int k=0;
-	tabl->add(1,k++);
-	tabl->add(6,k++);
-	tabl->add(78,k++);
-	tabl->add(3,k++);
-	tabl->add(6,k++);
-	tabl->add(-11,k++);
-	tabl->add(8,k++);
-	tabl->add(4,k++);
-	tabl->add(4,k++);
-	tabl->add(0,k++);
 
-	for (int i=0; i<tabl->size(); i++) {
-		cout << tabl->get(i) << " ";
+	int liczbaElementow[] = {10, 100, 1000, 10000, 100000/*, 1000000*/ /*, 1000000000*/};
+	
+	Stoper czas;
+	double srednia = 0;
+	
+	ofstream Wyniki;
+	Wyniki.open("Wyniki");
+	if(!Wyniki.is_open()){
+    	cerr << "Nie otwarty plik!"<< endl;
+   	 return 1;
 	}
-	cout << endl;
+	
+	try{
+		for (int i=0; i<4; i++) {
+			for(int j=0; j<10; j++) {
+				ListTestQs Lista;
+				Lista.prepare(liczbaElementow[i]);
+				czas.start();
+				Lista.run();
+				czas.stop();
+				srednia = srednia + czas.getElapsedTime();
+			}
+			srednia = srednia / 10;
+			Wyniki << liczbaElementow[i] << " " << srednia << endl;
+			srednia = 0;
+			cout << "Test for " << liczbaElementow[i] << " finished." << endl;
+		}
+	}
+	catch (EmptyListException()) {
+		cout << "EmptyListException!" << endl;
+	}
+	catch (...) {
+		cout << "Unexpected!" << endl;
+	}
+//	cout << "Czas działania: " << czas.getElapsedTime() << " ms." << endl;
+	Wyniki.close();
+	
+//	IList<int> * tabl = new List<int>;
+//	int k=0;
+//	tabl->add(1,k++);
+//	tabl->add(6,k++);
+//	tabl->add(78,k++);
+//	tabl->add(3,k++);
+//	tabl->add(6,k++);
+//	tabl->add(-11,k++);
+//	tabl->add(8,k++);
+//	tabl->add(4,k++);
+//	tabl->add(4,k++);
+//	tabl->add(0,k++);
 
-	tabl->qs();
-	for (int i=0; i<tabl->size(); i++) {
-		cout << tabl->get(i) << " ";
-	}
-	cout << endl;
+//	for (int i=0; i<tabl->size(); i++) {
+//		cout << tabl->get(i) << " ";
+//	}
+//	cout << endl;
+
+//	tabl->qs();
+//	for (int i=0; i<tabl->size(); i++) {
+//		cout << tabl->get(i) << " ";
+//	}
+//	cout << endl;
 
 
   /* 
