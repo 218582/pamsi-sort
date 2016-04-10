@@ -112,6 +112,11 @@ private:
   			Tablica.qs_b(indexFront,indexBack);
   	}
   	
+  	void mergesort (int indexFront, int indexBack) {
+  		if (indexBack == 0) {throw EmptyListException();}
+  		else 
+  			Tablica.ms(indexFront,indexBack);
+  	}
   	
 public:
   /*!
@@ -162,6 +167,26 @@ public:
 	   		throw;
 	   	}
    }
+   
+   /*!
+    *\brief Sortowanie mergesort
+    *
+    * Sortuje elementy listy algorytmem mergesort
+    * \param[in] indexFront indeks elementu pierwszego do sortowania
+    * \param[in] indexBack indeks elementu ostatniego do sortowania
+    * \warning wymaga typu danych zawierającego przeciążenia operatora porównania
+    * \exception EmptyListException gdy lista jest pusta
+    */
+   virtual void ms(void) {
+   		try {
+	   		mergesort(0,Tablica.Index());
+	   		//Tablica.showDebugInfo();
+	   	}
+	   	catch (...) {
+	   		throw;
+	   	}
+   }
+   
 };
 
 #endif

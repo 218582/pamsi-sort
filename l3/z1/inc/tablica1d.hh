@@ -238,7 +238,45 @@ public:
 	}
   }
 
-
+	void merging(int indexFront, int indexMid, int indexBack) {
+		Typ* TablicaTemp = new Typ [indexBack+1-indexFront];
+		int fr = indexFront;
+		int i = 0;
+		int j = indexMid+1;
+		while((fr<=indexMid) && (j<=indexBack)) {
+			if (TablicaPtr[fr] <=TablicaPtr[j]) {
+				TablicaTemp[i] = TablicaPtr[fr++];
+			}
+			else {
+				TablicaTemp[i] = TablicaPtr[j++];
+			}
+			i++;
+		}
+		if(fr>indexMid) {
+			for (int g=j;g<=indexBack;g++) {
+				TablicaTemp[i++] = TablicaPtr[g];	
+			}
+		}
+		else {
+			for (int g=fr; g<=indexMid;g++) {
+				TablicaTemp[i++] = TablicaPtr[g];
+			}
+		}
+		for(int g=0;g<=indexBack-indexFront;g++) {
+			TablicaPtr[g+indexFront] = TablicaTemp[g];
+		}
+		delete [] TablicaTemp;
+	}
+	
+	virtual void ms(int indexFront, int indexBack) {
+		int indexMid;
+		if (indexFront < indexBack) {
+			indexMid = (indexFront + indexBack) /2;
+			ms(indexFront,indexMid);
+			ms(indexMid+1,indexBack);
+			merging(indexFront, indexMid, indexBack);
+		}
+	}
 };
 
 #endif

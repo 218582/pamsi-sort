@@ -45,6 +45,10 @@ public:
   virtual void qs_random(void) = 0;
   virtual void qs_mo3(void) = 0;
   virtual void qs_b(void) = 0;
+  /*!
+   *\brief Mergesort
+   */
+  virtual void ms(void) = 0;
 };
   
 

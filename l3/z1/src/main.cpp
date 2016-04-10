@@ -25,6 +25,25 @@ int main()
 	
 	try{
 	
+		Wyniki << "#Mergesort" << endl;
+		for (int i=0; i<7; i++) {
+			for(int j=0; j<10; j++) {
+				ListTestMergesort lista;
+				Stoper czas;
+				czas.start();
+				lista.prepare(liczbaElementow[i]);
+				czas.stop();
+				czas.start();
+				lista.run();
+				czas.stop();
+				srednia = srednia + czas.getElapsedTime();
+			}
+			srednia = srednia / 10;
+			Wyniki << liczbaElementow[i] << " " << srednia << endl;
+			srednia = 0;
+			cout << "Test: mergesort for " << liczbaElementow[i] << " finished." << endl;
+		}
+		
 		Wyniki << "#Pesymistyczny" << endl;
 		for (int i=0; i<5; i++) {
 			for(int j=0; j<10; j++) {
@@ -41,7 +60,7 @@ int main()
 			srednia = srednia / 10;
 			Wyniki << liczbaElementow[i] << " " << srednia << endl;
 			srednia = 0;
-			cout << "Test for " << liczbaElementow[i] << " finished." << endl;
+			cout << "Test: quicksort pessimistic for " << liczbaElementow[i] << " finished." << endl;
 		}
 		Wyniki << "#Środkowy" << endl;
 		for (int i=0; i<7; i++) {
@@ -59,7 +78,7 @@ int main()
 			srednia = srednia / 10;
 			Wyniki << liczbaElementow[i] << " " << srednia << endl;
 			srednia = 0;
-			cout << "Test for " << liczbaElementow[i] << " finished." << endl;
+			cout << "Test: quicksort middle for " << liczbaElementow[i] << " finished." << endl;
 		}
 		Wyniki << "#Losowy" << endl;
 		for (int i=0; i<7; i++) {
@@ -77,7 +96,7 @@ int main()
 			srednia = srednia / 10;
 			Wyniki << liczbaElementow[i] << " " << srednia << endl;
 			srednia = 0;
-			cout << "Test for " << liczbaElementow[i] << " finished." << endl;
+			cout << "Test: quicksort random for " << liczbaElementow[i] << " finished." << endl;
 		}
 		Wyniki << "#Mediana z trzech" << endl;
 		for (int i=0; i<7; i++) {
@@ -95,7 +114,7 @@ int main()
 			srednia = srednia / 10;
 			Wyniki << liczbaElementow[i] << " " << srednia << endl;
 			srednia = 0;
-			cout << "Test for " << liczbaElementow[i] << " finished." << endl;
+			cout << "Test: quicksort median for " << liczbaElementow[i] << " finished." << endl;
 		}
 	}
 	catch (EmptyListException()) {

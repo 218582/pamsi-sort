@@ -116,4 +116,47 @@ public:
 		return true;		
 	}
 };
+
+class ListTestMergesort: public List<int>, public IRunnable {
+private:
+	int sizeOfTest;
+	double randomShift=0;
+	/*!
+	 * \brief Metoda ustawia punkt startowy generatora
+	 * pseudolosowego.
+	 */
+	void seedSrand (void) {
+		std::chrono::time_point<std::chrono::high_resolution_clock> one, two;
+		one = std::chrono::high_resolution_clock::now();
+		randomShift=randomShift+0.0001;
+		two = std::chrono::high_resolution_clock::now();
+		srand((double ((two-one).count())+randomShift));
+	}
+	
+	/*!
+	 * \brief Metoda generuje liczbę pseudolosową z zakresu 0..9
+	 *
+	 *\retval Liczba pseudolosowa z zakresu 0..9
+	 */
+	int generateRandomDgt (void) {
+		return rand()%9999;
+	}
+public:
+	 ListTestMergesort () {}
+
+
+	virtual bool prepare (int size) {
+		sizeOfTest = size;
+		for (int i = 0; i<size; i++) {
+			add(generateRandomDgt(),i);
+		}
+		return true;		
+	}
+	
+	virtual bool run () {
+		ms();
+		return true;		
+	}
+};
+
 #endif
