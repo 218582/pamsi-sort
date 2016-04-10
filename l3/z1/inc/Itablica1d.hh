@@ -16,7 +16,8 @@ public:
   virtual int Index()=0;
   virtual void qs(int,int) = 0;
   virtual void qs_random(int,int) = 0;
-  virtual void qs_mo3(int, int)=0;
+  virtual void qs_mo3(int, int) = 0;
+  virtual void qs_b(int,int) = 0;
   virtual ~Itablica1D() {};
 };
 #endif

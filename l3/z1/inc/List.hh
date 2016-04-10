@@ -106,6 +106,13 @@ private:
   			Tablica.qs_mo3(indexFront,indexBack);
   	}
   	
+  	void quicksort_b(int indexFront, int indexBack) {
+  		if (indexBack == 0) {throw EmptyListException();}
+  		else 
+  			Tablica.qs_b(indexFront,indexBack);
+  	}
+  	
+  	
 public:
   /*!
    *\brief Sortowanie szybkie
@@ -139,6 +146,16 @@ public:
    virtual void qs_mo3(void) {
    		try {
 	   		quicksort_mo3(0,Tablica.Index());
+	   		//Tablica.showDebugInfo();
+	   	}
+	   	catch (...) {
+	   		throw;
+	   	}
+   }
+   
+   virtual void qs_b(void) {
+   		try {
+	   		quicksort_b(0,Tablica.Index());
 	   		//Tablica.showDebugInfo();
 	   	}
 	   	catch (...) {

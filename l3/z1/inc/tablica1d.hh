@@ -211,6 +211,32 @@ public:
 		qs_random(i, indexBack);
 	}
   }
+  
+  virtual void qs_b(int indexFront, int indexBack) {
+  	int i = indexFront;
+	int j = indexBack;
+	
+	Typ pivot = TablicaPtr[indexBack];
+	do {
+		while(TablicaPtr[i] < pivot) {
+			i=i+1;
+		}
+		while (TablicaPtr[j] > pivot) {
+			j=j-1;
+		}
+		if (i<=j) {
+			swap(i,j);
+			i=i+1;
+			j=j-1;
+		}
+	} while (i<=j);
+	if (indexFront < j) {
+		qs_b(indexFront, j);
+	}
+	if (indexBack > i) {
+		qs_b(i, indexBack);
+	}
+  }
 
 
 };

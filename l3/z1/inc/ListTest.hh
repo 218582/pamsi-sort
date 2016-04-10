@@ -95,4 +95,25 @@ public:
 
 };
 
+class ListTestPes: public List<int>, public IRunnable {
+private:
+	int sizeOfTest;
+	
+public:
+	 ListTestPes () {}
+
+
+	virtual bool prepare (int size) {
+		sizeOfTest = size;
+		for (int i = 0; i<size; i++) {
+			add(i,i);
+		}
+		return true;		
+	}
+	
+	virtual bool run () {
+		qs_b();
+		return true;		
+	}
+};
 #endif
