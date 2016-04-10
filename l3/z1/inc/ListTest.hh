@@ -3,6 +3,8 @@
 #include "List.hh"
 #include "IRunnable.hh"
 #include <string>
+#include <ctime>
+#include <chrono>
 class ListTest: public List<string>, public IRunnable
 {
 private:
@@ -34,13 +36,19 @@ public:
 
 class ListTestQs: public List<int>, public IRunnable {
 private:
+	int typeOfTest;
 	int sizeOfTest;
+	double randomShift=0;
 	/*!
 	 * \brief Metoda ustawia punkt startowy generatora
 	 * pseudolosowego.
 	 */
 	void seedSrand (void) {
-		srand(time(NULL));
+		std::chrono::time_point<std::chrono::high_resolution_clock> one, two;
+		one = std::chrono::high_resolution_clock::now();
+		randomShift=randomShift+0.0001;
+		two = std::chrono::high_resolution_clock::now();
+		srand((double ((two-one).count())+randomShift));
 	}
 	
 	/*!
@@ -57,8 +65,14 @@ public:
 	 *\brief Konstruktor klasy testującej
 	 *
 	 */
-	ListTestQs () {
+	 ListTestQs () {
 		seedSrand();
+		typeOfTest = 0;
+	}
+	
+	ListTestQs (int type) {
+		seedSrand();
+		typeOfTest = type;
 	}
 	
 	virtual bool prepare (int size) {
@@ -70,7 +84,12 @@ public:
 	}
 	
 	virtual bool run () {
-		qs();
+		switch (typeOfTest) {
+			case 0: qs(); break;
+			case 1: qs_random(); break;
+			case 2: qs_mo3(); break;
+			default: break;
+		}
 		return true;		
 	}
 

@@ -95,12 +95,22 @@ private:
   		else 
   			Tablica.qs(indexFront,indexBack);
   		}
+  	void quicksort_random(int indexFront, int indexBack) {
+  		if (indexBack == 0) {throw EmptyListException();}
+  		else 
+  			Tablica.qs_random(indexFront,indexBack);
+  	}
+  	void quicksort_mo3(int indexFront, int indexBack) {
+  		if (indexBack == 0) {throw EmptyListException();}
+  		else 
+  			Tablica.qs_mo3(indexFront,indexBack);
+  	}
   	
 public:
   /*!
    *\brief Sortowanie szybkie
    *
-   * Sortuje elementy algorytmem quicksort
+   * Sortuje elementy algorytmem quicksort - piwotem środkowy element
    * \param[in] indexFront indeks elementu pierwszego do sortowania
    * \param[in] indexBack indeks elementu ostatniego do sortowania
    * \warning wymaga typu danych zawierającego przeciążenie operatora porównania
@@ -109,6 +119,27 @@ public:
    virtual void qs(void) {
    		try {
 	   		quicksort(0,Tablica.Index());
+	   		//Tablica.showDebugInfo();
+	   	}
+	   	catch (...) {
+	   		throw;
+	   	}
+   }
+   
+   virtual void qs_random(void) {
+   		try {
+	   		quicksort_random(0,Tablica.Index());
+	   		//Tablica.showDebugInfo();
+	   	}
+	   	catch (...) {
+	   		throw;
+	   	}
+   }
+   
+   virtual void qs_mo3(void) {
+   		try {
+	   		quicksort_mo3(0,Tablica.Index());
+	   		//Tablica.showDebugInfo();
 	   	}
 	   	catch (...) {
 	   		throw;

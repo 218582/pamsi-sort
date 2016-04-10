@@ -42,6 +42,8 @@ public:
     \brief Sortowanie szybkie
   */
   virtual void qs(void)=0;
+  virtual void qs_random(void) = 0;
+  virtual void qs_mo3(void) = 0;
 };
   
 

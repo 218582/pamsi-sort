@@ -11,23 +11,63 @@ using namespace std;
 int main()
 {
 
-	int liczbaElementow[] = {10, 100, 1000, 10000, 100000/*, 1000000*/ /*, 1000000000*/};
+	int liczbaElementow[] = {10, 100, 1000, 10000, 100000, 1000000, 100000000, 1000000000};
 	
-	Stoper czas;
+	
 	double srednia = 0;
 	
 	ofstream Wyniki;
-	Wyniki.open("Wyniki");
+	Wyniki.open("Wyniki",std::ios::app);
 	if(!Wyniki.is_open()){
     	cerr << "Nie otwarty plik!"<< endl;
    	 return 1;
 	}
 	
 	try{
-		for (int i=0; i<4; i++) {
+		Wyniki << "Środkowy" << endl;
+		for (int i=0; i<7; i++) {
 			for(int j=0; j<10; j++) {
-				ListTestQs Lista;
+				ListTestQs Lista(0);
+				Stoper czas;
+				czas.start();
 				Lista.prepare(liczbaElementow[i]);
+				czas.stop();
+				czas.start();
+				Lista.run();
+				czas.stop();
+				srednia = srednia + czas.getElapsedTime();
+			}
+			srednia = srednia / 10;
+			Wyniki << liczbaElementow[i] << " " << srednia << endl;
+			srednia = 0;
+			cout << "Test for " << liczbaElementow[i] << " finished." << endl;
+		}
+		Wyniki << "Losowy" << endl;
+		for (int i=0; i<7; i++) {
+			for(int j=0; j<10; j++) {
+				ListTestQs Lista(1);
+				Stoper czas;
+				czas.start();
+				Lista.prepare(liczbaElementow[i]);
+				czas.stop();
+				czas.start();
+				Lista.run();
+				czas.stop();
+				srednia = srednia + czas.getElapsedTime();
+			}
+			srednia = srednia / 10;
+			Wyniki << liczbaElementow[i] << " " << srednia << endl;
+			srednia = 0;
+			cout << "Test for " << liczbaElementow[i] << " finished." << endl;
+		}
+		Wyniki << "Mediana z trzech" << endl;
+		for (int i=0; i<7; i++) {
+			for(int j=0; j<10; j++) {
+				ListTestQs Lista(2);
+				Stoper czas;
+				czas.start();
+				Lista.prepare(liczbaElementow[i]);
+				czas.stop();
 				czas.start();
 				Lista.run();
 				czas.stop();
@@ -45,7 +85,6 @@ int main()
 	catch (...) {
 		cout << "Unexpected!" << endl;
 	}
-//	cout << "Czas działania: " << czas.getElapsedTime() << " ms." << endl;
 	Wyniki.close();
 	
 //	IList<int> * tabl = new List<int>;
