@@ -3,8 +3,8 @@ Repozytorium na potrzeby kursu: "Projektowanie algorytmów i metody sztucznej in
 PWr
 
 #####Praca na kodzie innej osoby
-- [ ] Quicksort - dobór piwota
-- [ ] Quicksort - pomiary czasu trwania
-- [ ] Mergesort - pomiary czasu trwania
+- [x] Quicksort - dobór piwota
+- [x] Quicksort - pomiary czasu trwania
+- [x] Mergesort - pomiary czasu trwania
 
-Program w folderze l3.
+Program i sprawozdanie w folderze l3.
